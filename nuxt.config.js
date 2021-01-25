@@ -16,10 +16,6 @@ export default {
 
   components: true,
 
-  router: {
-    base: '/wdd-portfolio/',
-  },
-
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/stylelint-module',

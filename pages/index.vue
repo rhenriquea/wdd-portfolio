@@ -30,11 +30,10 @@ export default {}
 </script>
 
 <style>
-
-.container {
+/* .container {
   @apply min-h-screen flex justify-center items-center text-center mx-auto;
 }
-
+ */
 .container {
   margin: 0 auto;
   min-height: 100vh;

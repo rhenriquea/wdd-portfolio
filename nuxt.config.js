@@ -20,9 +20,5 @@ export default {
     base: '/wdd-portfolio/',
   },
 
-  buildModules: [
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/stylelint-module',
-    '@nuxtjs/tailwindcss',
-  ],
-}
+  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module', '@nuxtjs/tailwindcss'],
+};

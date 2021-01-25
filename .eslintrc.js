@@ -1,20 +1,30 @@
 module.exports = {
   root: true,
-  env: {
-    browser: true,
-    node: true,
-  },
   parserOptions: {
     parser: 'babel-eslint',
   },
   extends: [
-    '@nuxtjs',
+    'airbnb-base',
     'prettier',
     'prettier/vue',
     'plugin:prettier/recommended',
     'plugin:nuxt/recommended',
   ],
   plugins: ['prettier'],
-  // add your custom rules here
-  rules: {},
-}
+  rules: {
+    'func-names': ['error', 'never'],
+    'import/extensions': [
+      'error',
+      'always',
+      {
+        js: 'never',
+        json: 'never',
+      },
+    ],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.spec.js'] }],
+    'import/no-unresolved': [2, { caseSensitive: false }],
+    'no-param-reassign': 0,
+    'no-console': 0,
+    'no-unused-vars': 1,
+  },
+};

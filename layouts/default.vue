@@ -1,55 +1,27 @@
 <template>
   <div>
-    <Nuxt />
+    <Header />
+    <main class="px px-m-5x py">
+      <Nuxt />
+    </main>
+    <Footer />
   </div>
 </template>
 
-<style>
-html {
-  box-sizing: border-box;
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  word-spacing: 1px;
-}
+<script>
+import Footer from '../components/Footer.vue';
+import Header from '../components/Header.vue';
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
+export default {
+  components: {
+    Header,
+    Footer,
+  },
+};
+</script>
 
-.button--green {
-  border: 1px solid #3b8070;
-  border-radius: 4px;
-  color: #3b8070;
-  display: inline-block;
-  padding: 10px 30px;
-  text-decoration: none;
-}
-
-.button--green:hover {
-  background-color: #3b8070;
-  color: #fff;
-}
-
-.button--grey {
-  border: 1px solid #35495e;
-  border-radius: 4px;
-  color: #35495e;
-  display: inline-block;
-  margin-left: 15px;
-  padding: 10px 30px;
-  text-decoration: none;
-}
-
-.button--grey:hover {
-  background-color: #35495e;
-  color: #fff;
+<style lang="scss" scoped>
+main {
+  min-height: 100vh;
 }
 </style>

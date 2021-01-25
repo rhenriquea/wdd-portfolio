@@ -18,6 +18,7 @@ module.exports = {
     ],
     'selector-max-compound-selectors': 5,
     'selector-no-qualifying-type': null,
+    'selector-max-id': null,
     'scss/selector-no-redundant-nesting-selector': null,
   },
 };

@@ -75,6 +75,7 @@ import {
   longestName,
   longestSubstringWithNoRepeatedChars,
   longestPalindrome,
+  functionDefs,
 } from '../../utils/exercisesFunctions';
 
 import FunctionDebugger from '../../components/FunctionDebugger.vue';

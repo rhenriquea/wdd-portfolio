@@ -411,6 +411,37 @@ export function longestPalindrome(string) {
   return maxp;
 }
 
+export const functionDefs = {
+  reverseNumber: reverseNumber.toString(),
+  checkPalindrome: checkPalindrome.toString(),
+  stringCombinations: stringCombinations.toString(),
+  alphabetOrder: alphabetOrder.toString(),
+  uppercase: uppercase.toString(),
+  findLongestWord: findLongestWord.toString(),
+  vowelCount: vowelCount.toString(),
+  isPrime: isPrime.toString(),
+  getDataType: getDataType.toString(),
+  matrix: matrix.toString(),
+  secondGreatestLowest: secondGreatestLowest.toString(),
+  isPerfectNumber: isPerfectNumber.toString(),
+  factors: factors.toString(),
+  amountTocoins: amountTocoins.toString(),
+  exponencial: exponencial.toString(),
+  uniqueChar: uniqueChar.toString(),
+  countChars: countChars.toString(),
+  binarySearch: binarySearch.toString(),
+  minimumValue: minimumValue.toString(),
+  createId: createId.toString(),
+  getSubsets: getSubsets.toString(),
+  getCharOccurrence: getCharOccurrence.toString(),
+  findFirstNotRepeatedChar: findFirstNotRepeatedChar.toString(),
+  decrescentSort: decrescentSort.toString(),
+  longestName: longestName.toString(),
+  longestSubstringWithNoRepeatedChars: longestSubstringWithNoRepeatedChars.toString(),
+  isPalindrome: isPalindrome.toString(),
+  longestPalindrome: longestPalindrome.toString(),
+};
+
 export default {
   reverseNumber,
   checkPalindrome,
@@ -440,4 +471,5 @@ export default {
   longestSubstringWithNoRepeatedChars,
   isPalindrome,
   longestPalindrome,
+  functionDefs,
 };

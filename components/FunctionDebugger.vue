@@ -8,7 +8,7 @@
       <div>{{ editor.input }}</div>
     </div>
 
-    <div :id="`editor${index + 1}`" class="editor">{{ editor.callback.toString() }}</div>
+    <div :id="`editor${index + 1}`" class="editor">{{ functionDefs[editor.callback.name] }}</div>
 
     <div class="result">
       <small>Result:</small>
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import { functionDefs } from '../utils/exercisesFunctions';
+
 export default {
   props: {
     editor: {
@@ -37,5 +39,8 @@ export default {
       required: true,
     },
   },
+  data: () => ({
+    editorFn: functionDefs,
+  }),
 };
 </script>

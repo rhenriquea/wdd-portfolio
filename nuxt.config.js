@@ -28,26 +28,14 @@ export default {
     base: '/wdd-portfolio/',
   },
 
-  generate: {
-    exclude: ['utils'],
-  },
-
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
 
-  modules: ['@nuxtjs/style-resources'],
+  modules: ['@nuxtjs/style-resources', '@nuxt/content'],
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['~assets/styles/global.scss'],
 
   styleResources: {
     scss: ['./assets/styles/vars/*.scss'],
-  },
-
-  build: {
-    html: {
-      minify: {
-        minifyJS: false,
-      },
-    },
   },
 };

@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 /* eslint-disable no-continue */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-restricted-properties */
@@ -49,7 +50,7 @@ export function stringCombinations(string) {
     temp = '';
 
     for (let j = 0; j < characters.length; j++) {
-      if (i && Math.pow(2, j)) {
+      if (i & Math.pow(2, j)) {
         temp += characters[j];
       }
     }
@@ -199,16 +200,17 @@ export function factors(n) {
 
 // Exercise 14
 export function amountTocoins(amount, coins) {
-  if (amount === 0) return [];
-
+  if (amount === 0) {
+    return [];
+  }
   if (amount >= coins[0]) {
-    const left = amount - coins[0];
-    return [coins[0]].concat(amountTocoins(left, coins));
+    // eslint-disable-next-line prefer-const
+    let left = amount - coins[0];
+    return [coins[0]].concat(this.amountTocoins(left, coins));
   }
 
   coins.shift();
-
-  return amountTocoins(amount, coins);
+  return this.amountTocoins(amount, coins);
 }
 
 // Exercise 15
@@ -222,10 +224,14 @@ export function exponencial(base, n) {
 
 // Exercise 16
 export function uniqueChar(string) {
-  const chars = string.split('');
-  const uniqueArr = [...new Set(chars)];
-  const uniqueChars = uniqueArr.join('');
-  return uniqueChars;
+  const str = string;
+  let uniql = '';
+  for (let x = 0; x < str.length; x++) {
+    if (uniql.indexOf(str.charAt(x)) === -1) {
+      uniql += str[x];
+    }
+  }
+  return uniql;
 }
 
 // Exercise 17
@@ -411,37 +417,6 @@ export function longestPalindrome(string) {
   return maxp;
 }
 
-export const functionDefs = {
-  reverseNumber: reverseNumber.toString(),
-  checkPalindrome: checkPalindrome.toString(),
-  stringCombinations: stringCombinations.toString(),
-  alphabetOrder: alphabetOrder.toString(),
-  uppercase: uppercase.toString(),
-  findLongestWord: findLongestWord.toString(),
-  vowelCount: vowelCount.toString(),
-  isPrime: isPrime.toString(),
-  getDataType: getDataType.toString(),
-  matrix: matrix.toString(),
-  secondGreatestLowest: secondGreatestLowest.toString(),
-  isPerfectNumber: isPerfectNumber.toString(),
-  factors: factors.toString(),
-  amountTocoins: amountTocoins.toString(),
-  exponencial: exponencial.toString(),
-  uniqueChar: uniqueChar.toString(),
-  countChars: countChars.toString(),
-  binarySearch: binarySearch.toString(),
-  minimumValue: minimumValue.toString(),
-  createId: createId.toString(),
-  getSubsets: getSubsets.toString(),
-  getCharOccurrence: getCharOccurrence.toString(),
-  findFirstNotRepeatedChar: findFirstNotRepeatedChar.toString(),
-  decrescentSort: decrescentSort.toString(),
-  longestName: longestName.toString(),
-  longestSubstringWithNoRepeatedChars: longestSubstringWithNoRepeatedChars.toString(),
-  isPalindrome: isPalindrome.toString(),
-  longestPalindrome: longestPalindrome.toString(),
-};
-
 export default {
   reverseNumber,
   checkPalindrome,
@@ -471,5 +446,4 @@ export default {
   longestSubstringWithNoRepeatedChars,
   isPalindrome,
   longestPalindrome,
-  functionDefs,
 };

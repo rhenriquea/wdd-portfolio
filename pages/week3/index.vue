@@ -20,10 +20,7 @@
       properties or methods, and a <strong>method</strong> is a function stored as a property.
     </blockquote>
     <p>An example of Object would be:</p>
-    <div id="editor3JS" class="editor">
-      const person = { firstName: "John", lastName : "Doe", id : 5566, fullName : function() {
-      return this.firstName + " " + this.lastName; } };
-    </div>
+    <nuxt-content :document="examples[0]"></nuxt-content>
 
     <h3>Javascript Classes</h3>
     <p>
@@ -36,14 +33,7 @@
     </blockquote>
 
     <p>An example of Javascript Class would be:</p>
-    <div id="editor4JS" class="editor">
-      class Person { constructor(id, firstName, lastName) { this.id = id; this.firstName =
-      firstName; this.lastName = lastName; } fullName() { return this.firstName + " " +
-      this.lastName; } } const person1 = new Person(5566, "John", "Doe"); const person2 = new
-      Person(7788, "Walter", "White"); console.log(person1.id); // Will print 5566
-      console.log(person2.id); // Will print 7788 console.log(person1.fullName()); // Will print
-      'John Doe' console.log(person2.fullName()); // Will print 'Walter White'
-    </div>
+    <nuxt-content :document="examples[1]"></nuxt-content>
 
     <hr />
     <h2>What is an Event?</h2>
@@ -72,9 +62,8 @@
         </p>
 
         <pre></pre>
-        <div id="editor1HTML" class="editor"></div>
-        <div id="editor1JS" class="editor"></div>
-        <button id="btn1" onclick="showAlert()">Click this button</button>
+        <nuxt-content :document="examples[2]"></nuxt-content>
+        <button ref="btn1">Click this button</button>
       </li>
     </ul>
     <hr />
@@ -87,9 +76,8 @@
           the third event is a boolean that defines in which event propagation phase should occur.
         </p>
 
-        <div id="editor2HTML" class="editor"></div>
-        <div id="editor2JS" class="editor"></div>
-        <button id="btn2">AddEventListener Example</button>
+        <nuxt-content :document="examples[3]"></nuxt-content>
+        <button ref="btn2" id="btn2">AddEventListener Example</button>
       </li>
     </ul>
     <h4>removeEventListener(event, function, boolean)</h4>
@@ -108,10 +96,98 @@
         </p>
         <p>Try to click in the button below, and then click on the "AddEventListener Example".</p>
 
-        <button id="btn2" onclick="removeEvent()">
-          Remove Event from "AddEventListener Example"
-        </button>
+        <nuxt-content :document="examples[4]"></nuxt-content>
+
+        <button @click="removeEvent()">Remove Event from "AddEventListener Example"</button>
       </li>
     </ul>
   </div>
 </template>
+
+<script>
+export default {
+  /* eslint-disable no-alert */
+  async asyncData({ $content }) {
+    const examples = await $content('week3').sortBy('slug').fetch();
+    return { examples };
+  },
+  mounted() {
+    const { btn1, btn2 } = this.$refs;
+    btn1.addEventListener('click', this.showAlert, false);
+    btn2.addEventListener('click', this.showId, false);
+  },
+  methods: {
+    showId(event) {
+      alert(`The id attribute from this button is ${event.srcElement.id}`);
+    },
+    removeEvent() {
+      const btn = document.getElementById('btn2');
+      btn.removeEventListener('click', this.showId, false);
+      alert('Event removed. Click on the "AddEventListener Example" again');
+    },
+    showAlert() {
+      alert('Button clicked!');
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+main h1 {
+  border-bottom: 1px solid #cecece;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+}
+
+ul.unstyled {
+  list-style: none;
+}
+
+li > * {
+  font-weight: 300;
+  margin: 0;
+}
+
+blockquote {
+  background-color: #ffc;
+  font-size: small;
+  padding: 15px;
+}
+
+.editor {
+  height: 650px;
+  margin: 15px 0;
+  width: 100%;
+}
+
+.ace_content {
+  padding: 10px;
+}
+
+#editor1JS {
+  height: 80px;
+}
+
+#editor2JS,
+#editor3JS {
+  height: 185px;
+}
+
+#editor4JS {
+  height: 360px;
+}
+
+button {
+  background-color: #ffa500;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px 0;
+  padding: 5px 10px;
+}
+
+button:hover {
+  background-color: rgb(64, 163, 255);
+}
+</style>

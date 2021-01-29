@@ -72,7 +72,7 @@ import {
   longestSubstringWithNoRepeatedChars,
   isPalindrome,
   longestPalindrome,
-} from '../../utils/exercisesFunctions';
+} from './exercises';
 
 export default {
   async asyncData({ $content }) {

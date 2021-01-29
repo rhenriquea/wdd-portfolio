@@ -10,7 +10,13 @@
     <nuxt-content :document="examples[0]" />
 
     <p>Using the class above let's create a form to add a company to an array of companies.</p>
+    <small
+      >You can read more about classes on the
+      <NuxtLink to="/week3">Week 03 annotations</NuxtLink></small
+    >
 
+    <h2 class="mt">Form Example</h2>
+    <hr />
     <div class="row">
       <div class="col">
         <h3>Add a Company</h3>
@@ -147,6 +153,10 @@ export default {
 
 h6 {
   margin-bottom: 5px;
+}
+
+p {
+  margin: 0;
 }
 
 figure {

@@ -176,18 +176,4 @@ blockquote {
 #editor4JS {
   height: 360px;
 }
-
-button {
-  background-color: #ffa500;
-  border: 0;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-  margin: 10px 0;
-  padding: 5px 10px;
-}
-
-button:hover {
-  background-color: rgb(64, 163, 255);
-}
 </style>

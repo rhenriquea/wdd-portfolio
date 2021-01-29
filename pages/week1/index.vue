@@ -104,20 +104,6 @@ main h1 {
   text-transform: uppercase;
 }
 
-label {
-  display: flex;
-  flex-direction: column;
-  font-weight: 300;
-  max-width: 300px;
-}
-
-input {
-  border: 1px solid #cecece;
-  border-radius: 5px;
-  margin-top: 5px;
-  padding: 5px;
-}
-
 input.error {
   border: 1px solid #d20000;
 }

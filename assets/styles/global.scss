@@ -10,3 +10,33 @@ h1,h2,h3,h4,h5,h6, ul, ol {
   padding: 0;
 }
 
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 300;
+  max-width: 300px;
+}
+
+input {
+  border: 1px solid #cecece;
+  border-radius: 5px;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+button {
+  background: #1e90ff;
+  border: 1px solid #1f8fff;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  margin: 15px 0;
+  padding: 8px;
+}
+
+a {
+  color:  #1f8fff;
+  font-weight: 400;
+  text-decoration: none;
+}

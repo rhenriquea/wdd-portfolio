@@ -128,7 +128,7 @@ figure {
 main h1 {
   border-bottom: 1px solid #cecece;
   margin-bottom: 15px;
-  padding-bottom: 5px;
+  padding-bottom: 15px;
 }
 
 p {

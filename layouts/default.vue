@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <Header />
     <main class="px px-m-5x py">
       <Nuxt />
@@ -22,6 +22,8 @@ export default {
 
 <style lang="scss" scoped>
 main {
+  margin: 0 auto;
+  max-width: 768px;
   min-height: 100vh;
 }
 </style>

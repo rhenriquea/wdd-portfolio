@@ -1,13 +1,38 @@
 body {
   box-sizing: border-box;
-  font-family: 'Noto Sans JP', sans-serif;
+  color: #293042 ;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1em;
+  font-weight: 400;
+  line-height: 1.3em;
   margin: 0;
   padding: 0;
 }
 
-h1,h2,h3,h4,h5,h6, ul, ol {
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Noto Sans JP', sans-serif;
   margin: 0;
+  margin-bottom: 10px;
+  margin-top: 15px;
   padding: 0;
+}
+
+p {
+  margin: 10px 0;
+}
+
+ol {
+  font-family: 'Noto Sans JP', sans-serif;
+  padding: 0 20px;
+}
+
+li {
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 15px;
+}
+
+li::marker, strong, a {
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 label {

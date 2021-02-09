@@ -1,6 +1,6 @@
 <template>
   <header ref="header">
-    <div class="py mb container">
+    <div class="p mb container">
       <div>
         <router-link to="/" custom v-slot="{ navigate }">
           <h1 @click="navigate" @keypress.enter="navigate" role="link">WDD Portfolio</h1>

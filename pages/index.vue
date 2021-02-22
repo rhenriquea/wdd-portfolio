@@ -20,6 +20,7 @@ export default {
       { name: 'Week 05', to: '/week5' },
       { name: 'Week 06: Challenge - ToDo App', to: '/week6' },
       { name: 'Week 07', to: '/week7' },
+      { name: 'Week 08', to: '/week8' },
     ],
   }),
 };

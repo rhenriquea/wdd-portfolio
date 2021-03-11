@@ -22,6 +22,7 @@ export default {
       { name: 'Week 07', to: '/week7' },
       { name: 'Week 08', to: '/week8' },
       { name: 'Week 09', to: '/week9' },
+      { name: 'Week 10', to: '/week10' },
     ],
   }),
 };

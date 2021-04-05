@@ -288,6 +288,7 @@
 
 <script>
 export default {
+  layout: 'reading',
   async asyncData({ $content }) {
     const examples = await $content('week7').sortBy('slug').fetch();
     return { examples };

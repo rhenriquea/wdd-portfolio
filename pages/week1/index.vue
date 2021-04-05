@@ -1,12 +1,11 @@
 <template>
   <div>
-    <h1>Week01</h1>
+    <h1>Localstorage Stories</h1>
     <p>
       This week we will look an app that is going to allow people to write, save, edit, and show a
-      story they write.
+      story they write. <br />
+      Find an example below &#128071;
     </p>
-
-    <p>Find an example below &#128071;</p>
 
     <hr />
 
@@ -28,6 +27,7 @@
 
 <script>
 export default {
+  layout: 'reading',
   data: () => ({
     storyName: null,
     storyEditor: null,
@@ -89,19 +89,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-textarea {
-  background-color: #f7f7f7;
-  border-radius: 5px;
-  height: 250px;
+h1,
+p,
+input,
+button {
   margin-bottom: 15px;
-  width: 800px;
-}
-
-main h1 {
-  border-bottom: 1px solid #cecece;
-  font-size: 24px;
-  margin-bottom: 15px;
-  text-transform: uppercase;
 }
 
 input.error {
@@ -113,17 +105,6 @@ input.error::after {
   display: block;
   height: auto;
   width: auto;
-}
-
-section button {
-  background: #1e90ff;
-  border: 1px solid #1f8fff;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-  font-size: 12px;
-  margin: 15px 0;
-  padding: 8px;
 }
 
 #story_title {

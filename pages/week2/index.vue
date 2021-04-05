@@ -1,12 +1,5 @@
 <template>
   <div>
-    <h1>Week02</h1>
-    <p>
-      This week we will describe the basic definitions of a function and what are javascript arrays
-    </p>
-
-    <p>Find an example below &#128071;</p>
-
     <h1>Arrays and Functions</h1>
     <h2>What is an Array?</h2>
     <p>An array is a special variable, which can hold more than one value at a time.</p>
@@ -75,6 +68,7 @@ import {
 } from './exercises';
 
 export default {
+  layout: 'reading',
   async asyncData({ $content }) {
     const examples = await $content('week2').sortBy('slug').fetch();
     return { examples };

@@ -1,29 +1,655 @@
 <template>
   <div>
-    <h2>Readings</h2>
-    <ol class="nav-links">
-      <li class="mr" :class="{ 'mr-0': index === links.length - 1 }" v-for="(link, index) in links">
-        <NuxtLink :to="link.to">{{ link.name }}</NuxtLink>
-      </li>
-    </ol>
+    <header :class="{ scrolled }" class="header">
+      <div class="header--logo">Rafael</div>
+      <nav class="header--menu">
+        <ul>
+          <li class="mobile-only">
+            <i class="material-icons">menu</i>
+            <div class="dropdown">
+              <ul>
+                <li>
+                  <a href="#" v-scroll-to="'#home'">Home</a>
+                </li>
+                <li>
+                  <a href="#" v-scroll-to="'#about'">About</a>
+                </li>
+                <li>
+                  <a href="#" v-scroll-to="'#portfolio'">Portfolio</a>
+                </li>
+                <li>
+                  <a href="#" v-scroll-to="'#contact'">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#" v-scroll-to="'#home'">Home</a>
+          </li>
+          <li>
+            <a href="#" v-scroll-to="'#about'">About</a>
+          </li>
+          <li>
+            <a href="#" v-scroll-to="'#portfolio'">Portfolio</a>
+          </li>
+          <li>
+            <a href="#" v-scroll-to="'#contact'">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="home">
+        <div class="profile">
+          <img src="/images/perfil.jpg" alt="Rafael Henrique de Alneida" />
+          <div class="profile-content">
+            <h2>Rafael Almeida</h2>
+            <h3>B.S Web Design and Development / Software Engineer</h3>
+            <ul class="social">
+              <li v-for="icon in icons">
+                <a :href="icon.url" target="_blank"> <i :class="'mdi ' + `${icon.id}`"> </i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="about" class="container">
+        <h2>About Me</h2>
+        <p>
+          <span class="text-highlight"> Hello, I'm Rafael Almeida</span> a experienced tech
+          professional with vast knowledge in Javascript, Typescript, CSS and Pre-Processors (Less,
+          Sass, SCSS), HTML, Vue.js and Angular. Currently working with SSR solutions with Nuxt.js
+          (Vue.js), managing REST api’s with GraphQL for a Supermarket company. Already worked for
+          big companies like KLM – Royal Dutch Airlines and GFT Group. Fluent English, Native
+          Portuguese and Basic Dutch.
+        </p>
+        <div class="download-btn">
+          <button>Download CV <i class="mdi mdi-download"></i></button>
+        </div>
+      </section>
+      <section id="portfolio" class="container">
+        <h2>Portfolio</h2>
+        <div class="portfolio-actions">
+          <button
+            v-for="item in portfolioButtons"
+            @click="select(item.type)"
+            :class="{ active: item.type === portfolioType }"
+          >
+            {{ item.title }}
+          </button>
+        </div>
+        <div v-if="false" class="my-overlay">
+          <button>X</button>
+          <vueper-slides>
+            <vueper-slide v-for="i in 5" :key="i" :title="i.toString()" />
+          </vueper-slides>
+        </div>
+        <div class="card-grid">
+          <div class="img-container" v-for="i in portfolio">
+            <div class="content">
+              <div class="content-overlay"></div>
+              <img
+                :src="'https://picsum.photos/id/' + Math.floor(Math.random() * 101) + '/300'"
+                width="100%"
+                alt="Avatar"
+                class="img-content"
+                style="width: 100%"
+              />
+              <div class="content-details fadeIn-top">
+                <h3>{{ i.name }}</h3>
+                <p>{{ i.description }}</p>
+                <a v-if="i.external" :href="i.href">{{ i.name }}</a>
+                <div v-else>
+                  <router-link :to="i.to" custom v-slot="{ navigate }">
+                    <button @click="navigate" @keypress.enter="navigate" role="link">Read</button>
+                  </router-link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="container">
+        <h2>Contact</h2>
+        <div class="contact-box">
+          <i class="mdi mdi-email"></i>
+          EMAIL
+          <span class="text-highlight">rafa.almeida.js@gmail.com</span>
+        </div>
+        <div class="contact-box">
+          <i class="mdi mdi-phone"></i>
+          PHONE
+          <span class="text-highlight">+310683417049</span>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <a href="#" v-scroll-to="'#home'" class="to-top"><i class="mdi mdi-arrow-up"></i></a>
+      <ul class="social">
+        <li v-for="icon in icons">
+          <a :href="icon.url" target="_blank"> <i :class="'mdi ' + `${icon.id}`"> </i></a>
+        </li>
+      </ul>
+      <p>
+        © Copyright {{ new Date().getFullYear() }}
+        <span class="text-highlight"> Rafael Almeida </span>. All rights reserved.
+      </p>
+    </footer>
   </div>
 </template>
 
 <script>
+import { VueperSlides, VueperSlide } from 'vueperslides';
+import 'vueperslides/dist/vueperslides.css';
+
 export default {
+  components: { VueperSlides, VueperSlide },
   data: () => ({
+    scrolled: false,
+    portfolioType: 'all',
+    portfolioButtons: [
+      { title: 'All Categories', type: 'all' },
+      { title: 'Coding', type: 'coding' },
+      { title: 'UX & Design', type: 'design' },
+      { title: 'Readings', type: 'readings' },
+    ],
+    portfolio: [],
     links: [
-      { name: 'Week 01', to: '/week1' },
-      { name: 'Week 02', to: '/week2' },
-      { name: 'Week 03', to: '/week3' },
-      { name: 'Week 04', to: '/week4' },
-      { name: 'Week 05', to: '/week5' },
-      { name: 'Week 06: Challenge - ToDo App', to: '/week6' },
-      { name: 'Week 07', to: '/week7' },
-      { name: 'Week 08', to: '/week8' },
-      { name: 'Week 09', to: '/week9' },
-      { name: 'Week 10', to: '/week10' },
+      {
+        name: 'Localstorage Stories',
+        description:
+          'This week we will look an app that is going to allow people to write, save, edit, and show a story they write.',
+        to: '/week1',
+        type: 'readings',
+      },
+      {
+        name: 'Arrays and Functions',
+        description: `A quick overview over Arrays and Functions`,
+        to: '/week2',
+        type: 'readings',
+      },
+      {
+        name: 'Javascript Objects vs Javascript Classes',
+        description: `Although both may look very similar in the implementation, the concept of Classes and Objects in Javascript are very distinct.
+
+`,
+        to: '/week3',
+        type: 'readings',
+      },
+      {
+        name: 'Practical application of Classes and Forms',
+        description: `Continuation on Classes and Objects concepts`,
+        to: '/week4',
+        type: 'readings',
+      },
+      {
+        name: 'Javascript Test Types',
+        description: `A quick overview on JS test types`,
+        to: '/week5',
+        type: 'readings',
+      },
+      { name: 'Week 06: Challenge - ToDo App', to: '/week6', type: 'readings' },
+      {
+        name: 'Higher-order Functions in Javascript',
+        description: `The notes this week is based on a short explanation on closures, callbacks, and how to access an unspecified number of arguments in a higher-order function with the spread operator`,
+        to: '/week7',
+        type: 'readings',
+      },
+      {
+        name: 'SVG Drawings and CSS Animations',
+        description: `On the notes this weeks I have followed some tutorials on how to use SVG and in the end I have created the back of two cards for a deck.
+`,
+        to: '/week8',
+        type: 'readings',
+      },
+      {
+        name: 'HTML 5 APIs',
+        description: `The notes this week is based on short demonstrations of HTML5 API's`,
+        to: '/week9',
+        type: 'readings',
+      },
+      {
+        name: 'MEMES API',
+        description: `Application of the fetch concept to retrieve the MEME API information`,
+        to: '/week10',
+        type: 'readings',
+      },
+      {
+        name: 'Marvel API Integration',
+        to: '/',
+        type: 'coding',
+        external: true,
+        href: 'https://marvel-nuxt.vercel.app/',
+      },
+      { name: 'Netflix in Vue.js', href: 'https://kccyt.csb.app/', external: true, type: 'coding' },
+      { name: 'Codepen', href: 'https://codepen.io/rhenriquea/', external: true, type: 'coding' },
+      {
+        name: 'Behance.net',
+        href: 'https://www.behance.net/rhenriquea/',
+        external: true,
+        type: 'design',
+      },
+    ],
+    icons: [
+      { id: 'mdi-git', url: 'https://github.com/rhenriquea' },
+      { id: 'mdi-linkedin', url: 'https://www.linkedin.com/in/rhenriquea/' },
+      { id: 'mdi-behance', url: 'https: //www.behance.net/rhenriquea' },
+      { id: 'mdi-medium', url: 'https://rhenriquea.medium.com/' },
+      { id: 'mdi-twitter', url: 'https://twitter.com/therafahenrique' },
+      { id: 'mdi-instagram', url: 'https://www.instagram.com/rafael_alm3ida_/' },
     ],
   }),
+  mounted() {
+    window.addEventListener('scroll', this.scrollListener);
+    this.portfolio = this.links;
+  },
+
+  methods: {
+    scrollListener() {
+      this.scrolled = window.scrollY > 10;
+    },
+    select(type) {
+      this.portfolio = this.links.filter(p => p.type === type);
+      this.portfolioType = type;
+
+      if (this.portfolio.length === 0) {
+        this.portfolio = this.links;
+        this.portfolioType = 'all';
+      }
+    },
+  },
+
+  destroyed() {
+    window.removeEventListener('scroll', this.scrollListener);
+  },
 };
 </script>
+
+<style lang="scss" scoped>
+.header {
+  align-items: center;
+  background: transparent;
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  left: 0;
+  padding: 0 30px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: all ease 0.2s;
+  z-index: 9999;
+
+  &.scrolled {
+    background: #141414;
+  }
+
+  &--logo {
+    color: #1cb698;
+    font-family: 'Righteous', cursive;
+    font-size: 36px;
+    transition: all 0.5s ease 0s;
+  }
+
+  &--menu {
+    border-radius: 3px;
+    height: 35px;
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+      list-style: none;
+      margin: 0;
+      margin-top: 10px;
+
+      li {
+        display: none;
+        margin-bottom: 0;
+        margin-left: 15px;
+        @media only screen and (min-width: 560px) {
+          display: block;
+        }
+
+        &.mobile-only {
+          display: none;
+          @media only screen and (max-width: 560px) {
+            display: block;
+          }
+        }
+
+        a {
+          color: #fff;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+.dropdown {
+  background-color: #252a2e;
+  padding: 15px;
+  position: absolute;
+  right: 31px;
+  right: 32px;
+
+  ul {
+    display: block;
+    padding: 0;
+    li {
+      border-bottom: 1px solid;
+      display: block;
+      margin: 0;
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      a {
+        &:hover {
+          color: #1cb698;
+        }
+      }
+    }
+  }
+}
+
+#contact,
+#about {
+  margin: 60px auto;
+}
+
+#contact {
+  height: 50vh;
+}
+
+section {
+  h2 {
+    color: #fff;
+    font-family: 'Righteous', cursive;
+    font-size: 34px;
+    line-height: 40px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    position: relative;
+    text-align: center;
+
+    &::before {
+      border-bottom: 1px solid #1cb698;
+      bottom: 8px;
+      content: '';
+      display: table;
+      left: 0;
+      margin: 0 auto;
+      position: absolute;
+      right: 0;
+      width: 80px;
+    }
+
+    &::after {
+      border-bottom: 1px solid #1cb698;
+      bottom: 0;
+      content: '';
+      display: table;
+      left: 0;
+      margin: 0 auto;
+      position: absolute;
+      right: 0;
+      width: 40px;
+    }
+  }
+}
+
+#home {
+  align-items: center;
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+  &::after {
+    background-image: url('/images/hero1.jpeg');
+    background-size: cover;
+    bottom: 0;
+    content: '';
+    left: 0;
+    opacity: 0.15;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+.text-highlight {
+  color: #1cb698;
+  font-weight: 500;
+}
+
+#contact {
+  text-align: center;
+}
+
+.profile {
+  background: #252b2e;
+  border-radius: 10px;
+  margin: 0 auto;
+  max-width: 450px;
+  position: absolute;
+  text-align: center;
+  z-index: 3;
+  h2 {
+    font-family: 'Righteous', cursive;
+    font-size: 48px;
+    line-height: 50px;
+    text-transform: uppercase;
+  }
+  h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+  }
+  img {
+    border: 12px solid #1cb698;
+    border-radius: 50%;
+    position: relative;
+    top: -85px;
+    width: 150px;
+  }
+
+  &-content {
+    margin-top: -85px;
+    padding: 20px;
+  }
+}
+
+.social {
+  display: table;
+  list-style: none;
+  margin: 15px auto;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    margin: 0 5px;
+    a {
+      border: 1px solid #fff;
+      border-radius: 100%;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      display: block;
+      font: inherit;
+      font-size: 20px;
+      height: 42px;
+      line-height: 42px;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      transition: all 0.5s ease 0s;
+      vertical-align: baseline;
+      width: 42px;
+
+      &:hover {
+        background: #1cb698;
+        border-color: #1cb698;
+        box-shadow: none;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.card-grid {
+  img {
+    width: 100%;
+
+    &:hover {
+      &::before {
+        background: #cece;
+        content: '';
+        height: auto;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.portfolio-actions {
+  margin-bottom: 1em;
+  text-align: center;
+
+  button {
+    margin: 0 5px;
+    width: 150px;
+
+    &.active,
+    &:hover {
+      background: #1cb698;
+      border-color: #1cb698;
+    }
+  }
+}
+
+.img-container .title {
+  color: #1a1a1a;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.content {
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.content .content-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  bottom: 0;
+  height: 99%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: all 0.4s ease-in-out 0s;
+  transition: all 0.4s ease-in-out 0s;
+  transition: all 0.4s ease-in-out 0s;
+  width: 100%;
+}
+
+.content:hover .content-overlay {
+  opacity: 1;
+}
+
+.content-image {
+  width: 100%;
+}
+
+.content-details {
+  left: 50%;
+  opacity: 0;
+  padding-left: 1em;
+  padding-right: 1em;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+  width: 100%;
+}
+
+.content:hover .content-details {
+  left: 50%;
+  opacity: 1;
+  top: 50%;
+}
+
+.content-details h3 {
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
+
+.content-details p {
+  color: #fff;
+  font-size: 0.8em;
+}
+
+.fadeIn-top {
+  top: 20%;
+}
+
+.my-overlay {
+  background: #252a2e;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.contact-box {
+  background: #252a2e;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 10px;
+  margin-bottom: 25px;
+  padding: 12px 10px;
+  text-align: center;
+  transition: all 0.8s ease 0s;
+  width: 195px;
+}
+
+.download-btn {
+  text-align: center;
+}
+
+footer {
+  background-color: #252a2e;
+  padding-bottom: 30px;
+  position: relative;
+  text-align: center;
+
+  a.to-top {
+    background: #1cb698;
+    border: 1px solid #1cb698;
+    border-radius: 100%;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 10px;
+    position: relative;
+    top: -10px;
+  }
+  p {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    line-height: 24px;
+  }
+}
+</style>

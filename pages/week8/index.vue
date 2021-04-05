@@ -105,7 +105,7 @@
         </div>
       </div>
 
-      <div class="stage">
+      <div class="stage" v-if="false">
         <section class="stage__ligths">
           <section class="stage__title">
             <div class="stage__description">
@@ -151,6 +151,7 @@
 
 <script>
 export default {
+  layout: 'reading',
   async asyncData({ $content }) {
     const examples = await $content('week8').sortBy('slug').fetch();
     return { examples };

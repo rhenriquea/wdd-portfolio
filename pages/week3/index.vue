@@ -1,14 +1,6 @@
 <template>
   <div>
-    <h1>Week03</h1>
-    <p>
-      This week I will show some manipulation of events in the DOM and the difference between JS
-      Classes and JS Objects.
-    </p>
-
-    <p>Find an example below &#128071;</p>
-
-    <h2>Javascript Objects vs Javascript Classes</h2>
+    <h1>Javascript Objects vs Javascript Classes</h1>
     <p>
       Although both may look very similar in the implementation, the concept of Classes and Objects
       in Javascript are very distinct.
@@ -106,6 +98,7 @@
 
 <script>
 export default {
+  layout: 'reading',
   /* eslint-disable no-alert */
   async asyncData({ $content }) {
     const examples = await $content('week3').sortBy('slug').fetch();
@@ -150,6 +143,7 @@ li > * {
 
 blockquote {
   background-color: #ffc;
+  color: rgb(0, 0, 0);
   font-size: small;
   padding: 15px;
 }

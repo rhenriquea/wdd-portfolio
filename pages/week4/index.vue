@@ -47,7 +47,6 @@
                 <li v-for="employee in company.employers">
                   <figure>
                     <img :src="employee.avatar" :alt="employee.name" class="mr" />
-                    <figcaption>{{ employee.name }}</figcaption>
                   </figure>
                 </li>
               </ul>
@@ -63,6 +62,7 @@
 
 <script>
 export default {
+  layout: 'reading',
   async asyncData({ $content }) {
     const examples = await $content('week4').fetch();
     return {

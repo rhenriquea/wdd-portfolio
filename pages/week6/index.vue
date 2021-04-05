@@ -56,6 +56,7 @@
 
 <script>
 export default {
+  layout: 'reading',
   data: () => ({
     todos: [],
     task: '',
@@ -150,15 +151,6 @@ button {
   outline: none;
 }
 
-input[type='text'] {
-  border: 1px solid #d3d3d3;
-  border-radius: 5px;
-  border-right: 0;
-  font-size: 1.2em;
-  line-height: 1.2em;
-  padding: 5px;
-}
-
 ol {
   border: 1px solid #d3d3d3;
   border-radius: 5px;
@@ -209,13 +201,12 @@ time.completed {
 }
 
 .form-control button {
-  background-color: #27b7d3;
-  border-bottom-right-radius: 20px;
-  border-top-right-radius: 20px;
+  border: 1px solid;
+  border-radius: 100%;
   color: #fff;
   font-size: 1.3em;
-  margin-left: -5px;
-  padding: 5px 20px;
+  margin-left: 10px;
+  padding: 10px 20px;
 }
 
 .form-control button:disabled {

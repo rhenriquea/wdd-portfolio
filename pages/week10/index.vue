@@ -23,8 +23,8 @@
       <nuxt-content :document="examples[0]"></nuxt-content>
 
       <h4>Results</h4>
-      <div v-for="meme of memes">
-        <figure>
+      <div class="card-grid">
+        <figure v-for="meme of memes">
           <img :src="meme.url" :alt="meme.name" />
           <figcaption>{{ meme.name }} ({{ meme.id }})</figcaption>
         </figure>
@@ -35,6 +35,7 @@
 
 <script>
 export default {
+  layout: 'reading',
   data: () => ({
     memes: null,
   }),
@@ -52,9 +53,6 @@ export default {
 
 <style lang="scss" scoped>
 figure {
-  height: 50%;
-  width: 50%;
-
   img {
     height: auto;
     width: 100%;

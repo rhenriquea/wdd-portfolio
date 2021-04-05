@@ -105,6 +105,7 @@ import { OSM, Vector as VectorSource } from 'ol/source';
 import Point from 'ol/geom/Point';
 
 export default {
+  layout: 'reading',
   head: () => ({
     link: [
       {

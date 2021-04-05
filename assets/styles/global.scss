@@ -1,6 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Work+Sans:wght@200;300;400&display=swap');
+
 body {
+  background-color: #1e2426;
   box-sizing: border-box;
-  color: #293042 ;
+  color: #fff ;
   font-family: 'Lato', sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -10,7 +14,7 @@ body {
 }
 
 h1,h2,h3,h4,h5,h6 {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Righteous', cursive;
   margin: 0;
   margin-bottom: 10px;
   margin-top: 15px;
@@ -42,26 +46,46 @@ label {
   max-width: 300px;
 }
 
-input {
-  border: 1px solid #cecece;
+input, textarea {
+  background-color: #252A2E;
+  border: 0 solid #D2D2D2;
   border-radius: 5px;
-  margin-top: 5px;
-  padding: 5px;
+  box-shadow: 0 18px 18px 0 #000014;
+  color: #FFF;
+  font-size: 15px;
+  height: 12px;
+  letter-spacing: 0.5px;
+  line-height: 15px;
+  padding: 18px;
+}
+
+textarea {
+  height: 250px;
+  width: 800px;
 }
 
 button {
-  background: #1e90ff;
-  border: 1px solid #1f8fff;
-  border-radius: 5px;
+  background: transparent;
+  border: 1px solid #1eb697;
   color: #fff;
   cursor: pointer;
-  font-size: 12px;
-  margin: 15px 0;
-  padding: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin: 5px 0;
+  outline: none;
+  padding: 12px;
+  transition-property: color;
+  vertical-align: middle;
+
+  &:hover {
+    background: #1eb697;
+    border: 1px solid #1eb697;
+  }
 }
 
 a {
-  color:  #1f8fff;
+  color:  $primary;
   font-weight: 400;
   text-decoration: none;
 }
@@ -91,16 +115,210 @@ blockquote {
 }
 
 span.important {
-    background-color: #fffacf;
-    border-radius: 5px;
-    display: block;
-    font-size: smaller;
-    font-weight: bold;
+  border: 1px solid $yellow;
+  border-radius: 5px;
+  color: $yellow;
+  display: block;
+  font-size: smaller;
   padding: 15px;
   &::before {
     color: $red;
     content: "⚠️ Important:";
+    font-weight: 500;
     height: 50px;
     width: 50px;
   }
 }
+
+.container {
+  margin: 0 auto;
+  max-width: 1024px;
+}
+
+.card-grid {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.candidatos {
+  margin-bottom: 20px;
+  position: relative;
+}
+.candidatos .parcial {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+}
+.candidatos .parcial .info {
+  position: relative;
+}
+.candidatos .parcial .info .nome {
+  font-size: 15px;
+  font-weight: 600;
+  left: 0;
+  opacity: 0.9;
+  position: absolute;
+  top: 0;
+}
+.candidatos .parcial .info .eleito,
+.candidatos .parcial .info .segundo-turno {
+  border-radius: 2px;
+  padding: 0 5px 2px;
+}
+.candidatos .parcial .progressBar .percentagem-num {
+  background: #1cb698;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: normal;
+  font-weight: 600;
+  height: 40px;
+  letter-spacing: 0;
+  line-height: 40px;
+  position: absolute;
+  right: -15px;
+  text-align: center;
+  top: -17px;
+  width: 40px;
+}
+.candidatos .parcial .progressBar {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  height: 7px;
+  margin: 30px 0 2px;
+  position: relative;
+  width: 100%;
+}
+.candidatos .parcial .percentagem {
+  animation-duration: 3s;
+  animation-name: animationProgress;
+  background: #1cb698;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 7px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: 3s all;
+}
+.candidatos .parcial .partidas {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.percentual {
+  animation-name: animationProgress;
+}
+@keyframes animationProgress {
+  from {
+    width: 0;
+  }
+}
+
+/*========================================
+	My Resume Css START
+========================================*/
+.db-education-item {
+  border-right: 2px solid #1cb698;
+  display: block;
+  margin-bottom: 30px;
+  position: relative;
+}
+.dark-box-bg {
+  background: #252a2e;
+  box-shadow: 0 18px 18px 0 rgba(0, 0, 0, 0.2);
+  padding: 25px;
+}
+.dark-box-bg h4,
+.dark-box-bg h4 a {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 24px;
+  margin-bottom: 10px;
+}
+.dark-box-bg h4 a {
+  color: #1cb698;
+  font-style: italic;
+}
+.db_year {
+  color: #1cb698;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.db-education-details {
+  border-right: 1px solid #333;
+  padding-right: 35px;
+}
+.db-education-item::after {
+  background-color: #1cb698;
+  border-radius: 10px;
+  content: '';
+  display: inline-block;
+  height: 2px;
+  position: absolute;
+  right: -37px;
+  top: 50%;
+  width: 36px;
+  z-index: 1;
+}
+.db-education-item::before {
+  background-color: #1cb698;
+  border: 2px solid #1cb698;
+  border-radius: 10px;
+  content: '';
+  display: inline-block;
+  height: 12px;
+  position: absolute;
+  right: -43px;
+  top: 50%;
+  transform: translateY(-45%);
+  width: 12px;
+  z-index: 2;
+}
+.db-experience-item {
+  border-left: 2px solid #1cb698;
+  display: block;
+  margin-bottom: 30px;
+  position: relative;
+}
+.db-experience-details {
+  border-left: 1px solid #333;
+  padding-left: 35px;
+}
+.db-experience-item::after {
+  background-color: #1cb698;
+  border-radius: 10px;
+  content: '';
+  display: inline-block;
+  height: 2px;
+  left: -37px;
+  position: absolute;
+  top: 50%;
+  width: 36px;
+  z-index: 1;
+}
+.db-experience-item::before {
+  background-color: #1cb698;
+  border: 2px solid #1cb698;
+  border-radius: 10px;
+  content: '';
+  display: inline-block;
+  height: 12px;
+  left: -43px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-45%);
+  width: 12px;
+  z-index: 2;
+}
+.db-experience-item ul li {
+  list-style: disc inside;
+}
+/*========================================
+	My Resume Css END
+========================================*/

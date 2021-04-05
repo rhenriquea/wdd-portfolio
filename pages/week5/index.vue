@@ -1,11 +1,6 @@
 <template>
   <div>
-    <h1>Week05</h1>
-    <p>This week the readings are related to Tests.</p>
-
-    <p>Find an example below &#128071;</p>
-
-    <h2>Javascript Test Types</h2>
+    <h1>Javascript Test Types</h1>
     <p>In general, most projects use the following test types:</p>
 
     <div v-for="example in examples">
@@ -106,6 +101,7 @@
 
 <script>
 export default {
+  layout: 'reading',
   /* eslint-disable no-alert */
   async asyncData({ $content }) {
     const examples = await $content('week5').sortBy('slug').fetch();

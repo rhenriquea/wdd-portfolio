@@ -23,6 +23,10 @@ export default {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap',
       },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
+      },
     ],
   },
 
@@ -34,7 +38,13 @@ export default {
 
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
 
-  modules: ['@nuxtjs/style-resources', '@nuxt/content'],
+  modules: [
+    '@nuxtjs/style-resources',
+    '@nuxt/content',
+    '@neneos/nuxt-animate.css',
+    'nuxtjs-mdi-font',
+    ['vue-scrollto/nuxt', { duration: 300, offset: -100 }],
+  ],
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['~assets/styles/global.scss'],

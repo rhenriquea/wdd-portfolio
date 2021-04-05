@@ -140,6 +140,14 @@ span.important {
   grid-auto-rows: auto;
   grid-gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
+
+  @media only screen and (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media only screen and (max-width: 840px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .candidatos {
@@ -168,7 +176,7 @@ span.important {
   padding: 0 5px 2px;
 }
 .candidatos .parcial .progressBar .percentagem-num {
-  background: #1cb698;
+  background: $primary;
   border-radius: 50px;
   font-size: 15px;
   font-weight: normal;
@@ -193,7 +201,7 @@ span.important {
 .candidatos .parcial .percentagem {
   animation-duration: 3s;
   animation-name: animationProgress;
-  background: #1cb698;
+  background: $primary;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -222,7 +230,7 @@ span.important {
 	My Resume Css START
 ========================================*/
 .db-education-item {
-  border-right: 2px solid #1cb698;
+  border-right: 2px solid $primary;
   display: block;
   margin-bottom: 30px;
   position: relative;
@@ -242,11 +250,11 @@ span.important {
   margin-bottom: 10px;
 }
 .dark-box-bg h4 a {
-  color: #1cb698;
+  color: $primary;
   font-style: italic;
 }
 .db_year {
-  color: #1cb698;
+  color: $primary;
   font-weight: 600;
   margin-bottom: 10px;
 }
@@ -255,7 +263,7 @@ span.important {
   padding-right: 35px;
 }
 .db-education-item::after {
-  background-color: #1cb698;
+  background-color: $primary;
   border-radius: 10px;
   content: '';
   display: inline-block;
@@ -267,8 +275,8 @@ span.important {
   z-index: 1;
 }
 .db-education-item::before {
-  background-color: #1cb698;
-  border: 2px solid #1cb698;
+  background-color: $primary;
+  border: 2px solid $primary;
   border-radius: 10px;
   content: '';
   display: inline-block;
@@ -281,7 +289,7 @@ span.important {
   z-index: 2;
 }
 .db-experience-item {
-  border-left: 2px solid #1cb698;
+  border-left: 2px solid $primary;
   display: block;
   margin-bottom: 30px;
   position: relative;
@@ -291,7 +299,7 @@ span.important {
   padding-left: 35px;
 }
 .db-experience-item::after {
-  background-color: #1cb698;
+  background-color: $primary;
   border-radius: 10px;
   content: '';
   display: inline-block;
@@ -303,8 +311,8 @@ span.important {
   z-index: 1;
 }
 .db-experience-item::before {
-  background-color: #1cb698;
-  border: 2px solid #1cb698;
+  background-color: $primary;
+  border: 2px solid $primary;
   border-radius: 10px;
   content: '';
   display: inline-block;

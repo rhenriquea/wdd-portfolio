@@ -5,8 +5,10 @@
       <nav class="header--menu">
         <ul>
           <li class="mobile-only">
-            <i class="material-icons">menu</i>
-            <div class="dropdown">
+            <button @click.prevent="showMobile = !showMobile">
+              <i class="material-icons">menu</i>
+            </button>
+            <div class="dropdown" v-if="showMobile">
               <ul>
                 <li>
                   <a href="#" v-scroll-to="'#home'">Home</a>
@@ -55,7 +57,7 @@
       </section>
       <section id="about" class="container">
         <h2>About Me</h2>
-        <p>
+        <p class="about-description">
           <span class="text-highlight"> Hello, I'm Rafael Almeida</span> a experienced tech
           professional with vast knowledge in Javascript, Typescript, CSS and Pre-Processors (Less,
           Sass, SCSS), HTML, Vue.js and Angular. Currently working with SSR solutions with Nuxt.js
@@ -64,7 +66,9 @@
           Portuguese and Basic Dutch.
         </p>
         <div class="download-btn">
-          <button>Download CV <i class="mdi mdi-download"></i></button>
+          <a href="/rafael_almeida.pdf" download="Rafael Almeida CV"
+            >Download CV <i class="mdi mdi-download"></i
+          ></a>
         </div>
       </section>
       <section id="portfolio" class="container">
@@ -85,22 +89,22 @@
           </vueper-slides>
         </div>
         <div class="card-grid">
-          <div class="img-container" v-for="i in portfolio">
+          <div class="img-container" v-for="(project, i) in portfolio">
             <div class="content">
               <div class="content-overlay"></div>
               <img
-                :src="'https://picsum.photos/id/' + Math.floor(Math.random() * 101) + '/300'"
+                :src="project.img"
                 width="100%"
-                alt="Avatar"
+                :alt="project.name"
                 class="img-content"
                 style="width: 100%"
               />
               <div class="content-details fadeIn-top">
-                <h3>{{ i.name }}</h3>
-                <p>{{ i.description }}</p>
-                <a v-if="i.external" :href="i.href">{{ i.name }}</a>
+                <h3>{{ project.name }}</h3>
+                <p>{{ project.description }}</p>
+                <a v-if="project.external" :href="project.href">{{ project.name }}</a>
                 <div v-else>
-                  <router-link :to="i.to" custom v-slot="{ navigate }">
+                  <router-link :to="project.to" custom v-slot="{ navigate }">
                     <button @click="navigate" @keypress.enter="navigate" role="link">Read</button>
                   </router-link>
                 </div>
@@ -146,6 +150,7 @@ export default {
   components: { VueperSlides, VueperSlide },
   data: () => ({
     scrolled: false,
+    showMobile: false,
     portfolioType: 'all',
     portfolioButtons: [
       { title: 'All Categories', type: 'all' },
@@ -161,39 +166,48 @@ export default {
           'This week we will look an app that is going to allow people to write, save, edit, and show a story they write.',
         to: '/week1',
         type: 'readings',
+        img: '/images/placeholders/placeholder-1.jpg',
       },
       {
         name: 'Arrays and Functions',
         description: `A quick overview over Arrays and Functions`,
         to: '/week2',
         type: 'readings',
+        img: '/images/placeholders/placeholder-2.jpg',
       },
       {
         name: 'Javascript Objects vs Javascript Classes',
-        description: `Although both may look very similar in the implementation, the concept of Classes and Objects in Javascript are very distinct.
-
-`,
+        description: `Although both may look very similar in the implementation, the concept of Classes and Objects in Javascript are very distinct.`,
         to: '/week3',
         type: 'readings',
+        img: '/images/placeholders/placeholder-3.jpg',
       },
       {
         name: 'Practical application of Classes and Forms',
         description: `Continuation on Classes and Objects concepts`,
         to: '/week4',
         type: 'readings',
+        img: '/images/placeholders/placeholder-4.jpg',
       },
       {
         name: 'Javascript Test Types',
         description: `A quick overview on JS test types`,
         to: '/week5',
         type: 'readings',
+        img: '/images/placeholders/placeholder-5.jpg',
       },
-      { name: 'Week 06: Challenge - ToDo App', to: '/week6', type: 'readings' },
+      {
+        name: 'Week 06: Challenge - ToDo App',
+        to: '/week6',
+        type: 'readings',
+        img: '/images/placeholders/placeholder-6.jpg',
+      },
       {
         name: 'Higher-order Functions in Javascript',
         description: `The notes this week is based on a short explanation on closures, callbacks, and how to access an unspecified number of arguments in a higher-order function with the spread operator`,
         to: '/week7',
         type: 'readings',
+        img: '/images/placeholders/placeholder-7.jpg',
       },
       {
         name: 'SVG Drawings and CSS Animations',
@@ -201,18 +215,21 @@ export default {
 `,
         to: '/week8',
         type: 'readings',
+        img: '/images/placeholders/placeholder-8.jpg',
       },
       {
         name: 'HTML 5 APIs',
         description: `The notes this week is based on short demonstrations of HTML5 API's`,
         to: '/week9',
         type: 'readings',
+        img: '/images/placeholders/placeholder-9.jpg',
       },
       {
         name: 'MEMES API',
         description: `Application of the fetch concept to retrieve the MEME API information`,
         to: '/week10',
         type: 'readings',
+        img: '/images/placeholders/placeholder-10.jpg',
       },
       {
         name: 'Marvel API Integration',
@@ -220,14 +237,35 @@ export default {
         type: 'coding',
         external: true,
         href: 'https://marvel-nuxt.vercel.app/',
+        img: '/images/placeholders/placeholder-11.jpg',
       },
-      { name: 'Netflix in Vue.js', href: 'https://kccyt.csb.app/', external: true, type: 'coding' },
-      { name: 'Codepen', href: 'https://codepen.io/rhenriquea/', external: true, type: 'coding' },
       {
-        name: 'Behance.net',
-        href: 'https://www.behance.net/rhenriquea/',
+        name: 'Netflix in Vue.js',
+        href: 'https://kccyt.csb.app/',
+        external: true,
+        type: 'coding',
+        img: '/images/placeholders/placeholder-12.jpg',
+      },
+      {
+        name: 'Codepen',
+        href: 'https://codepen.io/rhenriquea/',
+        external: true,
+        type: 'coding',
+        img: '/images/placeholders/placeholder-13.jpg',
+      },
+      {
+        name: 'PSA Poster Campaign',
+        href: 'https://www.behance.net/gallery/116525753/PSA-Posters-Project-3-ART235',
         external: true,
         type: 'design',
+        img: '/images/placeholders/placeholder-14.jpg',
+      },
+      {
+        name: 'Conceptual Book Cover',
+        href: 'https://www.behance.net/gallery/114361899/Conceptual-Book-Cover',
+        external: true,
+        type: 'design',
+        img: '/images/placeholders/placeholder-15.jpg',
       },
     ],
     icons: [
@@ -285,7 +323,7 @@ export default {
   }
 
   &--logo {
-    color: #1cb698;
+    color: $primary;
     font-family: 'Righteous', cursive;
     font-size: 36px;
     transition: all 0.5s ease 0s;
@@ -293,7 +331,11 @@ export default {
 
   &--menu {
     border-radius: 3px;
-    height: 35px;
+
+    button {
+      padding: 5px;
+    }
+
     ul {
       display: flex;
       justify-content: space-evenly;
@@ -326,7 +368,7 @@ export default {
 }
 
 .dropdown {
-  background-color: #252a2e;
+  background-color: $bg-light;
   padding: 15px;
   position: absolute;
   right: 31px;
@@ -343,7 +385,7 @@ export default {
       padding-bottom: 5px;
       a {
         &:hover {
-          color: #1cb698;
+          color: $primary;
         }
       }
     }
@@ -371,7 +413,7 @@ section {
     text-align: center;
 
     &::before {
-      border-bottom: 1px solid #1cb698;
+      border-bottom: 1px solid $primary;
       bottom: 8px;
       content: '';
       display: table;
@@ -383,7 +425,7 @@ section {
     }
 
     &::after {
-      border-bottom: 1px solid #1cb698;
+      border-bottom: 1px solid $primary;
       bottom: 0;
       content: '';
       display: table;
@@ -405,7 +447,7 @@ section {
   width: 100%;
 
   &::after {
-    background-image: url('/images/hero1.jpeg');
+    background-image: url('/images/hero.jpeg');
     background-size: cover;
     bottom: 0;
     content: '';
@@ -417,7 +459,7 @@ section {
   }
 }
 .text-highlight {
-  color: #1cb698;
+  color: $primary;
   font-weight: 500;
 }
 
@@ -433,6 +475,11 @@ section {
   position: absolute;
   text-align: center;
   z-index: 3;
+
+  @media only screen and (max-width: 560px) {
+    margin-top: 200px;
+  }
+
   h2 {
     font-family: 'Righteous', cursive;
     font-size: 48px;
@@ -444,7 +491,7 @@ section {
     font-weight: 400;
   }
   img {
-    border: 12px solid #1cb698;
+    border: 12px solid $primary;
     border-radius: 50%;
     position: relative;
     top: -85px;
@@ -465,7 +512,7 @@ section {
 
   li {
     display: inline-block;
-    margin: 0 5px;
+    margin: 5px;
     a {
       border: 1px solid #fff;
       border-radius: 100%;
@@ -485,8 +532,8 @@ section {
       width: 42px;
 
       &:hover {
-        background: #1cb698;
-        border-color: #1cb698;
+        background: $primary;
+        border-color: $primary;
         box-shadow: none;
         text-decoration: none;
       }
@@ -494,7 +541,12 @@ section {
   }
 }
 
+.about-description {
+  padding: 0 20px;
+}
+
 .card-grid {
+  padding: 20px;
   img {
     width: 100%;
 
@@ -514,13 +566,17 @@ section {
   text-align: center;
 
   button {
-    margin: 0 5px;
+    margin: 5px;
     width: 150px;
+
+    @media only screen and (max-width: 560px) {
+      width: 135px;
+    }
 
     &.active,
     &:hover {
-      background: #1cb698;
-      border-color: #1cb698;
+      background: $primary;
+      border-color: $primary;
     }
   }
 }
@@ -601,7 +657,7 @@ section {
 }
 
 .my-overlay {
-  background: #252a2e;
+  background: $bg-light;
   bottom: 0;
   height: 100%;
   left: 0;
@@ -613,7 +669,7 @@ section {
 }
 
 .contact-box {
-  background: #252a2e;
+  background: $bg-light;
   border-radius: 10px;
   cursor: pointer;
   display: inline-block;
@@ -626,18 +682,23 @@ section {
 }
 
 .download-btn {
+  border: 1px solid $primary;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 15px 10px;
   text-align: center;
+  width: 150px;
 }
 
 footer {
-  background-color: #252a2e;
+  background-color: $bg-light;
   padding-bottom: 30px;
   position: relative;
   text-align: center;
 
   a.to-top {
-    background: #1cb698;
-    border: 1px solid #1cb698;
+    background: $primary;
+    border: 1px solid $primary;
     border-radius: 100%;
     color: #fff;
     font-size: 20px;
